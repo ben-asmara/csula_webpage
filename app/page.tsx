@@ -2,12 +2,12 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Button } from ".../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Separator } from "@/components/ui/separator";
+import { Badge } from ".../components/ui/badge";
+import { Input } from ".../components/ui/input";
+import { Textarea } from ".../components/ui/textarea";
+import { Separator } from ".../components/ui/separator";
 import { CalendarDays, GraduationCap, Users, MapPin, Mail, ArrowRight, ExternalLink, ChevronRight } from "lucide-react";
 
 const container = (delay = 0) => ({ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { delay, duration: 0.5 } } });
