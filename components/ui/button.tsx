@@ -4,20 +4,17 @@ import cn from "../utils/cn";
 type ButtonBaseProps = {
   variant?: "default" | "outline" | "secondary";
   size?: "sm" | "md" | "lg";
-  /** when true, render an <a> instead of <button> */
+  /** When true, render an <a> instead of <button> */
   asChild?: boolean;
   href?: string;
 };
 
 type ButtonProps =
-  (React.ButtonHTMLAttributes<HTMLButtonElement> &
-    React.AnchorHTMLAttributes<HTMLAnchorElement>) &
-  ButtonBaseProps;
+  ButtonBaseProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export const Button = React.forwardRef<
-  HTMLButtonElement & HTMLAnchorElement,
-  ButtonProps
->(function Button(
+export const Button = React.forwardRef<any, ButtonProps>(function Button(
   { className, variant = "default", size = "md", asChild = false, href, ...props },
   ref
 ) {
@@ -41,13 +38,10 @@ export const Button = React.forwardRef<
   );
 
   if (asChild) {
-    // Render an anchor when you pass asChild
-    // @ts-expect-error allow anchor ref union
-    return <a ref={ref as any} href={href} className={classes} {...props} />;
+    // Render an anchor when you pass asChild (for link buttons)
+    return <a ref={ref} href={href} className={classes} {...props} />;
   }
-  // Default: render a button
-  // @ts-expect-error allow button ref union
-  return <button ref={ref as any} className={classes} {...props} />;
+  return <button ref={ref} className={classes} {...props} />;
 });
 
 export default Button;
